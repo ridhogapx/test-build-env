@@ -12,3 +12,8 @@ type SaveBookRequest struct {
   Title string `json:"title"`
   Author string `json:"author"`
 }
+
+type WebResponse struct {
+  Status string `json:"status"`
+  Message string `json:"message"`
+}
