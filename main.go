@@ -1,8 +1,14 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"test-build-env/config"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
+  config.NewDBConnection("host=localhost user=root password=root dbname=test-build-env port=5432 sslmode=disable")
+
     r := gin.Default()
     
     r.GET("/", func(c *gin.Context) {
