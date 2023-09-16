@@ -1,11 +1,22 @@
 package config
 
 import (
+	"test-build-env/model"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-func SetupDBConnection(source string) *gorm.DB {
-    db, err := gorm.Open(postgres.Open(source), &gorm.Config{})
+var DB *gorm.DB
+
+func NewDBConnection(source string)  {
+  var err error  
+  DB, err = gorm.Open(postgres.Open(source), &gorm.Config{})
+   
+  if err != nil {
+      panic(err)
+  }
+  
+  DB.AutoMigrate(&model.Book{})
 
 }
