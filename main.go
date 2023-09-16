@@ -2,6 +2,7 @@ package main
 
 import (
 	"test-build-env/config"
+	"test-build-env/controller"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,7 +16,9 @@ func main() {
       c.JSON(200, gin.H{
         "message": "Testing route",
       })
-    })  
+    })
+
+    r.POST("/book", controller.SaveBook)
 
     r.Run(":8080")
 }
